@@ -6,7 +6,7 @@ int search(int arr[], int n, int x)
     int i;
     for (i = 0; i < n; i++)
         if (arr[i] == x)
-            return i+1;
+            return i;
     return -1;
 }
 
@@ -15,22 +15,23 @@ void combination(int arr[], int n){
     for (i=0; i<n; i++){
         a = arr[i];
         for (j=0; j<n; j++){
-            if (i == j)
-                continue;
+            if (i != j){
+                b = arr[j];
+                sum = a + b;
+                result = search(arr, n, sum);
 
-            b = arr[j];
-            sum = a + b;
-            result = search(arr, n, sum);
-
-            printf("%d\n", result);
+                if (result != -1){
+                    printf("Array Positions :\tarray[%d]\t+\tarray[%d]\t=\tarray[%d]\n", i, j, result);
+                    printf("Array Elements : \t%d\t\t+\t%d\t\t=\t%d\n\n", a, b, sum);
+                }
+            }
         }
     }
 }
 
 int main()
 {
-    int array[20], l;
-    int i, j, resut;
+    int array[20], l, i;
 
     printf("Enter the length of the array : ");
     scanf("%d", &l);
@@ -39,6 +40,17 @@ int main()
     for (i=0; i<l; i++){
         scanf("%d", &array[i]);
     }
+
+    printf("\n\nArray Positions : ");
+    for (i=0; i<l; i++){
+        printf("\t[%d]", array[i]-1);
+    }
+
+    printf("\nArray Elements :");
+    for (i=0; i<l; i++){
+        printf("\t%d", array[i]);
+    }
+    printf("\n\n");
 
     combination(array, l);
 

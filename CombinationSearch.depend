@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1557412221 source:/home/roshan/ProjectsAndCodes/CodeBlocks/CombinationSearch/main.c
+	<stdio.h>
+	<stdlib.h>
+
